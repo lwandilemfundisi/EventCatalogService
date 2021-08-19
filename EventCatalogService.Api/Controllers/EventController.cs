@@ -29,8 +29,7 @@ namespace EventCatalogService.Api.Controllers
         }
 
         [HttpGet("getEvents/{categoryId}")]
-        public async Task<IActionResult> GetEvents(
-            [FromQuery] string categoryId)
+        public async Task<IActionResult> GetEvents(string categoryId)
         {
             var result = await _queryProcessor
                 .ProcessAsync(
@@ -41,8 +40,7 @@ namespace EventCatalogService.Api.Controllers
         }
 
         [HttpGet("getEvent/{eventId}")]
-        public async Task<IActionResult> GetEventsById(
-            [FromQuery] string eventId)
+        public async Task<IActionResult> GetEventsById(string eventId)
         {
             var result = await _queryProcessor
                 .ProcessAsync(
