@@ -27,24 +27,35 @@ namespace EventCatalogService.Api.Controllers
             _commandBus = commandBus;
             _queryProcessor = queryProcessor;
         }
-
+        
         [HttpGet("getEvents/{categoryId}")]
-        public async Task<IActionResult> GetEvents(string categoryId)
+        public async Task<IActionResult> GetEvents(CategoryId categoryId)
         {
             var result = await _queryProcessor
                 .ProcessAsync(
-                new GetEventsQuery(new CategoryId(categoryId)), 
+                new GetEventsQuery(categoryId), 
+                CancellationToken.None);
+
+            return Ok(result);
+        }
+
+        [HttpGet("getEvents")]
+        public async Task<IActionResult> GetEvents()
+        {
+            var result = await _queryProcessor
+                .ProcessAsync(
+                new GetEventsQuery(null),
                 CancellationToken.None);
 
             return Ok(result);
         }
 
         [HttpGet("getEvent/{eventId}")]
-        public async Task<IActionResult> GetEventsById(string eventId)
+        public async Task<IActionResult> GetEventsById(EventDomain.EventId eventId)
         {
             var result = await _queryProcessor
                 .ProcessAsync(
-                new GetEventQuery(new EventDomain.EventId(eventId)),
+                new GetEventQuery(eventId),
                 CancellationToken.None);
 
             return Ok(result);
