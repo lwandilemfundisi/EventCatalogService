@@ -1,4 +1,6 @@
-﻿using EventCatalogService.Domain.DomainModel.EventCatalogDomainModel.Queries;
+﻿using EventCatalogService.Api.Models.RequestModels;
+using EventCatalogService.Domain.DomainModel.EventCatalogDomainModel.Entities;
+using EventCatalogService.Domain.DomainModel.EventCatalogDomainModel.Queries;
 using Microservice.Framework.Domain.Queries;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -23,7 +25,7 @@ namespace EventCatalogService.Api.Controllers
         }
 
         [HttpGet("getCategories")]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> GetCategories()
         {
             var result = await _queryProcessor
                 .ProcessAsync(
@@ -31,6 +33,24 @@ namespace EventCatalogService.Api.Controllers
                 CancellationToken.None);
 
             return Ok(result);
+        }
+
+        [HttpGet("getCategory/{categoryId}")]
+        public async Task<IActionResult> GetCategory(string categoryId)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await _queryProcessor
+                    .ProcessAsync(
+                    new GetCategoryQuery(new CategoryId(categoryId)),
+                    CancellationToken.None);
+
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest(ModelState.Values);
+            }
         }
     }
 }

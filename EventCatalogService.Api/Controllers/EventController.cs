@@ -1,5 +1,7 @@
-﻿using EventCatalogService.Domain.DomainModel.EventCatalogDomainModel.Entities;
+﻿using EventCatalogService.Api.Mappers;
+using EventCatalogService.Domain.DomainModel.EventCatalogDomainModel.Entities;
 using EventCatalogService.Domain.DomainModel.EventCatalogDomainModel.Queries;
+using Microservice.Framework.Common;
 using Microservice.Framework.Domain.Commands;
 using Microservice.Framework.Domain.Queries;
 using Microsoft.AspNetCore.Mvc;
@@ -28,37 +30,30 @@ namespace EventCatalogService.Api.Controllers
             _queryProcessor = queryProcessor;
         }
         
-        [HttpGet("getEvents/{categoryId}")]
-        public async Task<IActionResult> GetEvents(CategoryId categoryId)
-        {
-            var result = await _queryProcessor
-                .ProcessAsync(
-                new GetEventsQuery(categoryId), 
-                CancellationToken.None);
-
-            return Ok(result);
-        }
-
         [HttpGet("getEvents")]
-        public async Task<IActionResult> GetEvents()
+        public async Task<IActionResult> GetEvents([FromQuery(Name = "categoryId")]string categoryId)
         {
+            var catId = categoryId.IsNotNullOrEmpty()
+                ? new CategoryId(categoryId)
+                : null;
+
             var result = await _queryProcessor
                 .ProcessAsync(
-                new GetEventsQuery(null),
+                new GetEventsQuery(catId), 
                 CancellationToken.None);
 
-            return Ok(result);
+            return Ok(new MapEventsToEventDtos(result.ToList().AsReadOnly()).Map());
         }
 
         [HttpGet("getEvent/{eventId}")]
-        public async Task<IActionResult> GetEventsById(EventDomain.EventId eventId)
+        public async Task<IActionResult> GetEventsById(string eventId)
         {
             var result = await _queryProcessor
                 .ProcessAsync(
-                new GetEventQuery(eventId),
+                new GetEventQuery(new EventDomain.EventId(eventId)),
                 CancellationToken.None);
 
-            return Ok(result);
+            return Ok(new MapEventToEventDto(result).Map());
         }
     }
 }

@@ -61,73 +61,73 @@ namespace EventCatalogService.Api
                     webBuilder.UseStartup<Startup>();
                 });
 
-        private async static Task UpdateAsync<TAggregate, TIdentity>(TIdentity id, Action<TAggregate> action)
-            where TAggregate : class, IAggregateRoot<TIdentity>
-            where TIdentity : IIdentity
-        {
-            await _aggregateStore.UpdateAsync<TAggregate, TIdentity>(
-                id,
-                SourceId.New,
-                (a, c) =>
-                {
-                    action(a);
-                    return Task.FromResult(0);
-                },
-                CancellationToken.None);
-        }
+        //private async static Task UpdateAsync<TAggregate, TIdentity>(TIdentity id, Action<TAggregate> action)
+        //    where TAggregate : class, IAggregateRoot<TIdentity>
+        //    where TIdentity : IIdentity
+        //{
+        //    await _aggregateStore.UpdateAsync<TAggregate, TIdentity>(
+        //        id,
+        //        SourceId.New,
+        //        (a, c) =>
+        //        {
+        //            action(a);
+        //            return Task.FromResult(0);
+        //        },
+        //        CancellationToken.None);
+        //}
 
-        public static Task AddEventsAsync(EventDto eventDto)
-        {
-            return UpdateAsync<Event, EventId>(EventId.New, a => a.AddEvent(
-                eventDto.EventName,
-                eventDto.Price,
-                eventDto.Artist,
-                eventDto.Date,
-                eventDto.Description,
-                eventDto.ImageUrl,
-                eventDto.CategoryId));
-        }
-    }
+        //public static Task AddEventsAsync(EventDto eventDto)
+        //{
+        //    return UpdateAsync<Event, EventId>(EventId.New, a => a.AddEvent(
+        //        eventDto.EventName,
+        //        eventDto.Price,
+        //        eventDto.Artist,
+        //        eventDto.Date,
+        //        eventDto.Description,
+        //        eventDto.ImageUrl,
+        //        eventDto.CategoryId));
+        //}
+    //}
 
-    public class EventDto
-    {
-        public string EventName { get; set; }
-        public int Price { get; set; }
-        public string Artist { get; set; }
-        public DateTime Date { get; set; }
-        public string Description { get; set; }
-        public string ImageUrl { get; set; }
-        public CategoryId CategoryId { get; set; }
-    }
+    //public class EventDto
+    //{
+    //    public string EventName { get; set; }
+    //    public int Price { get; set; }
+    //    public string Artist { get; set; }
+    //    public DateTime Date { get; set; }
+    //    public string Description { get; set; }
+    //    public string ImageUrl { get; set; }
+    //    public CategoryId CategoryId { get; set; }
+    //}
 
-    public class Events
-    {
-        public static EventDto EventDto1 = new EventDto
-        {
-            EventName = "John Egbert Live",
-            Price = 65,
-            Artist = "John Egbert",
-            Date = new DateTime(2021, 3, 9, 17, 47, 1, 36, DateTimeKind.Local).AddTicks(9024),
-            Description = "Join John for his farwell tour across 15 continents. John really needs no introduction since he has already mesmerized the world with his banjo.",
-            ImageUrl = "https://gillcleerenpluralsight.blob.core.windows.net/files/GloboTicket/banjo.jpg",
-            CategoryId = new CategoryId("category-6313179f-7837-473a-a4d5-a5571b43e6a6")
-        };
+    //public class Events
+    //{
+    //    public static EventDto EventDto1 = new EventDto
+    //    {
+    //        EventName = "John Egbert Live",
+    //        Price = 65,
+    //        Artist = "John Egbert",
+    //        Date = new DateTime(2021, 3, 9, 17, 47, 1, 36, DateTimeKind.Local).AddTicks(9024),
+    //        Description = "Join John for his farwell tour across 15 continents. John really needs no introduction since he has already mesmerized the world with his banjo.",
+    //        ImageUrl = "https://gillcleerenpluralsight.blob.core.windows.net/files/GloboTicket/banjo.jpg",
+    //        CategoryId = new CategoryId("category-6313179f-7837-473a-a4d5-a5571b43e6a6")
+    //    };
 
-        public static EventDto EventDto2 = new EventDto
-        {
-            EventName = "The State of Affairs: Michael Live!",
-            Price = 85,
-            Artist = "Michael Johnson",
-            Date = new DateTime(2021, 6, 9, 17, 47, 1, 40, DateTimeKind.Local).AddTicks(2916),
-            Description = "Michael Johnson doesn't need an introduction. His 25 concert across the globe last year were seen by thousands. Can we add you to the list?",
-            ImageUrl = "https://gillcleerenpluralsight.blob.core.windows.net/files/GloboTicket/michael.jpg",
-            CategoryId = new CategoryId("category-6313179f-7837-473a-a4d5-a5571b43e6a6")
-        };
+    //    public static EventDto EventDto2 = new EventDto
+    //    {
+    //        EventName = "The State of Affairs: Michael Live!",
+    //        Price = 85,
+    //        Artist = "Michael Johnson",
+    //        Date = new DateTime(2021, 6, 9, 17, 47, 1, 40, DateTimeKind.Local).AddTicks(2916),
+    //        Description = "Michael Johnson doesn't need an introduction. His 25 concert across the globe last year were seen by thousands. Can we add you to the list?",
+    //        ImageUrl = "https://gillcleerenpluralsight.blob.core.windows.net/files/GloboTicket/michael.jpg",
+    //        CategoryId = new CategoryId("category-6313179f-7837-473a-a4d5-a5571b43e6a6")
+    //    };
 
-        public static IEnumerable<EventDto> GetEvents()
-        {
-            var fieldInfos = typeof(Events).GetFields(BindingFlags.Public | BindingFlags.Static);
-            return fieldInfos.Select(fi => (EventDto)fi.GetValue(null));
-        }
+    //    public static IEnumerable<EventDto> GetEvents()
+    //    {
+    //        var fieldInfos = typeof(Events).GetFields(BindingFlags.Public | BindingFlags.Static);
+    //        return fieldInfos.Select(fi => (EventDto)fi.GetValue(null));
+    //    }
     }
 }

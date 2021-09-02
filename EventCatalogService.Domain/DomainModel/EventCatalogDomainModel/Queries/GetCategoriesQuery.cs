@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace EventCatalogService.Domain.DomainModel.EventCatalogDomainModel.Queries
 {
     public class GetCategoriesQuery
-        : EFCoreCriteriaDomainQuery<Event>, IQuery<IEnumerable<Category>>
+        : EFCoreCriteriaDomainQuery<Category>, IQuery<IEnumerable<Category>>
     {
     }
 
