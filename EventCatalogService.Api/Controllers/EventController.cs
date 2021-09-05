@@ -31,7 +31,9 @@ namespace EventCatalogService.Api.Controllers
         }
         
         [HttpGet("getEvents")]
-        public async Task<IActionResult> GetEvents([FromQuery(Name = "categoryId")]string categoryId)
+        public async Task<IActionResult> GetEvents(
+            [FromQuery(Name = "categoryId")]string categoryId,
+            [FromQuery(Name = "ids")] string[] ids)
         {
             var catId = categoryId.IsNotNullOrEmpty()
                 ? new CategoryId(categoryId)
@@ -39,7 +41,7 @@ namespace EventCatalogService.Api.Controllers
 
             var result = await _queryProcessor
                 .ProcessAsync(
-                new GetEventsQuery(catId), 
+                new GetEventsQuery(catId) { Ids = ids.Select(id => new EventDomain.EventId(id)).ToList() }, 
                 CancellationToken.None);
 
             return Ok(new MapEventsToEventDtos(result.ToList().AsReadOnly()).Map());

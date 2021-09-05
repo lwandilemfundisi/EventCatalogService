@@ -26,7 +26,6 @@ namespace EventCatalogService.Domain.DomainModel.EventCatalogDomainModel.Queries
 
         protected override void OnBuildDomainCriteria(EFCoreDomainCriteria domainCriteria)
         {
-            domainCriteria.SafeAnd(new EqualityFilter("CategoryId", CategoryId, FilterType.Equal));
         }
     }
 
