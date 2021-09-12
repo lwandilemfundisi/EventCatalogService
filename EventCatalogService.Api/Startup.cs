@@ -1,9 +1,12 @@
 using EventCatalogService.Domain;
 using EventCatalogService.Persistence.Extensions;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -49,11 +52,24 @@ namespace EventCatalogService.Api
             });
 
             services
-                .AddControllers()
+                .AddControllers(configure => 
+                {
+                    configure.Filters.Add(
+                        new AuthorizeFilter(
+                            new AuthorizationPolicyBuilder()
+                            .RequireAuthenticatedUser()
+                            .Build()));
+                })
                 .AddNewtonsoftJson();
             services
                 .ConfigureEventCatalogServiceDomain()
                 .ConfigureEventCatalogPersistence(Configuration);
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(opts =>
+                {
+                    opts.Authority = Configuration["Auth:Authority"];
+                    opts.Audience = Configuration["Auth:Audience"];
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -71,6 +87,8 @@ namespace EventCatalogService.Api
             app.UseRouting();
 
             app.UseCors("enableCors");
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 
