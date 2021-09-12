@@ -51,25 +51,25 @@ namespace EventCatalogService.Api
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "EventCatalogService.Api", Version = "v1" });
             });
 
-            services
-                .AddControllers(configure => 
-                {
-                    configure.Filters.Add(
-                        new AuthorizeFilter(
-                            new AuthorizationPolicyBuilder()
-                            .RequireAuthenticatedUser()
-                            .Build()));
-                })
-                .AddNewtonsoftJson();
+            //services
+            //    .AddControllers(configure => 
+            //    {
+            //        configure.Filters.Add(
+            //            new AuthorizeFilter(
+            //                new AuthorizationPolicyBuilder()
+            //                .RequireAuthenticatedUser()
+            //                .Build()));
+            //    })
+            services.AddControllers().AddNewtonsoftJson();
             services
                 .ConfigureEventCatalogServiceDomain()
                 .ConfigureEventCatalogPersistence(Configuration);
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddJwtBearer(opts =>
-                {
-                    opts.Authority = Configuration["Auth:Authority"];
-                    opts.Audience = Configuration["Auth:Audience"];
-                });
+            //services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            //    .AddJwtBearer(opts =>
+            //    {
+            //        opts.Authority = Configuration["Auth:Authority"];
+            //        opts.Audience = Configuration["Auth:Audience"];
+            //    });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -88,7 +88,7 @@ namespace EventCatalogService.Api
 
             app.UseCors("enableCors");
 
-            app.UseAuthentication();
+            //app.UseAuthentication();
 
             app.UseAuthorization();
 

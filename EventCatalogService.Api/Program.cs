@@ -41,15 +41,15 @@ namespace EventCatalogService.Api
 
             var host = CreateHostBuilder(args).Build();
 
-            //using (var scope = host.Services.CreateScope())
-            //{
-            //    _aggregateStore = scope.ServiceProvider.GetRequiredService<IAggregateStore>();
+            using (var scope = host.Services.CreateScope())
+            {
+                _aggregateStore = scope.ServiceProvider.GetRequiredService<IAggregateStore>();
 
-            //    var db = scope.ServiceProvider.GetRequiredService<IDbContextProvider<EventCatalogContext>>();
-            //    db.CreateContext().Database.Migrate();
+                var db = scope.ServiceProvider.GetRequiredService<IDbContextProvider<EventCatalogContext>>();
+                db.CreateContext().Database.Migrate();
 
-            //    await Task.WhenAll(Events.GetEvents().Select(AddEventsAsync));
-            //}
+                //await Task.WhenAll(Events.GetEvents().Select(AddEventsAsync));
+            }
 
             host.Run();
         }
