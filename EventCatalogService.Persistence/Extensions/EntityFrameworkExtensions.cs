@@ -12,8 +12,7 @@ namespace EventCatalogService.Persistence.Extensions
     public static class EntityFrameworkExtensions
     {
         public static IDomainContainer ConfigureEventCatalogPersistence(
-            this IDomainContainer domainContainer,
-            IConfiguration configuration)
+            this IDomainContainer domainContainer)
         {
             return domainContainer
                 .ConfigureEntityFramework(EntityFrameworkConfiguration.New)
@@ -21,7 +20,6 @@ namespace EventCatalogService.Persistence.Extensions
                 .RegisterServices(sr =>
                 {
                     sr.AddTransient<IPersistenceFactory, EntityFrameworkPersistenceFactory<EventCatalogContext>>();
-                    sr.AddSingleton(rctx => { return configuration; });
                 });
         }
         

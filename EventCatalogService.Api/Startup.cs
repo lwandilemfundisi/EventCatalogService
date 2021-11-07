@@ -45,6 +45,7 @@ namespace EventCatalogService.Api
                     });
             });
 
+            services.AddSingleton(_ => Configuration);
             services.AddLogging(l => l.AddConsole());
             services.AddSwaggerGen(c =>
             {
@@ -60,10 +61,12 @@ namespace EventCatalogService.Api
             //                .RequireAuthenticatedUser()
             //                .Build()));
             //    })
-            services.AddControllers().AddNewtonsoftJson();
+            services
+                .AddControllers()
+                .AddNewtonsoftJson();
             services
                 .ConfigureEventCatalogServiceDomain()
-                .ConfigureEventCatalogPersistence(Configuration);
+                .ConfigureEventCatalogPersistence();
             //services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             //    .AddJwtBearer(opts =>
             //    {
