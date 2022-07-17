@@ -1,0 +1,16 @@
+version: '3.4'
+
+services:
+  db:
+    image: "mcr.microsoft.com/mssql/server"
+    environment:
+        - ACCEPT_EULA=Y
+        - MSSQL_SA_PASSWORD=Pa&&w0rd
+
+  eventcatalog:
+    image: ${DOCKER_REGISTRY-}eventcatalog
+    build:
+      context: .
+      dockerfile: /Dockerfile
+    depends_on:
+        - db
