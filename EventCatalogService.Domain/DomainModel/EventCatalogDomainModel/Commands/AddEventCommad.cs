@@ -1,13 +1,9 @@
 ﻿using EventCatalogService.Domain.DomainModel.EventCatalogDomainModel.Entities;
-using Microservice.Framework.Domain.Commands;
-using Microservice.Framework.Domain.ExecutionResults;
-using Microservice.Framework.Persistence;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using XFrame.Aggregates.Commands;
+using XFrame.Aggregates.ExecutionResults;
 
 namespace EventCatalogService.Domain.DomainModel.EventCatalogDomainModel.Commands
 {

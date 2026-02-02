@@ -1,12 +1,8 @@
-﻿using Microservice.Framework.Domain.Queries;
-using Microservice.Framework.Persistence;
-using Microservice.Framework.Persistence.EFCore.Queries.CriteriaQueries;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
+using XFrame.Aggregates.Queries;
+using XFrame.Persistence;
+using XFrame.Persistence.EFCore.Queries.CriteriaQueries;
 
 namespace EventCatalogService.Domain.DomainModel.EventCatalogDomainModel.Queries
 {

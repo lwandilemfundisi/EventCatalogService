@@ -1,25 +1,12 @@
-using EventCatalogService.Domain.DomainModel.EventCatalogDomainModel;
-using EventCatalogService.Domain.DomainModel.EventCatalogDomainModel.Entities;
 using EventCatalogService.Persistence;
-using Microservice.Framework.Common;
-using Microservice.Framework.Domain.Aggregates;
-using Microservice.Framework.Persistence.EFCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Serilog;
 using Serilog.Events;
 using Serilog.Sinks.SystemConsole.Themes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Threading;
-using System.Threading.Tasks;
-using EventId = EventCatalogService.Domain.DomainModel.EventCatalogDomainModel.EventId;
+using XFrame.Persistence.EFCore;
 
 namespace EventCatalogService.Api
 {

@@ -1,14 +1,9 @@
-﻿using EventCatalogService.Api.Models.RequestModels;
-using EventCatalogService.Domain.DomainModel.EventCatalogDomainModel.Entities;
+﻿using EventCatalogService.Domain.DomainModel.EventCatalogDomainModel.Entities;
 using EventCatalogService.Domain.DomainModel.EventCatalogDomainModel.Queries;
-using Microservice.Framework.Domain.Queries;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using XFrame.Aggregates.Queries;
 
 namespace EventCatalogService.Api.Controllers
 {

@@ -1,6 +1,6 @@
-﻿using Microservice.Framework.Common;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+﻿using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using System.Linq;
+using XFrame.ValueObjects.XmlValueObjects;
 
 namespace EventCatalogService.Persistence.ValueObjectConverters
 {

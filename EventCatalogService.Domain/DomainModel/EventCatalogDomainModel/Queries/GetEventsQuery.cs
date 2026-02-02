@@ -1,16 +1,11 @@
 ﻿using EventCatalogService.Domain.DomainModel.EventCatalogDomainModel.Entities;
-using Microservice.Framework.Domain.Queries;
-using Microservice.Framework.Persistence;
-using Microservice.Framework.Persistence.EFCore.Queries.CriteriaQueries;
-using Microservice.Framework.Persistence.EFCore.Queries.Filtering;
-using Microservice.Framework.Persistence.Extensions;
-using Microservice.Framework.Persistence.Queries.Filtering;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using XFrame.Aggregates.Queries;
+using XFrame.Persistence;
+using XFrame.Persistence.EFCore.Queries.CriteriaQueries;
+using XFrame.Persistence.EFCore.Queries.Filtering;
 
 namespace EventCatalogService.Domain.DomainModel.EventCatalogDomainModel.Queries
 {

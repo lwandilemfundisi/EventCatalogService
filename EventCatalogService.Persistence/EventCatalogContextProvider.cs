@@ -1,7 +1,7 @@
-﻿using Microservice.Framework.Persistence.EFCore;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
+using XFrame.Persistence.EFCore;
 
 namespace EventCatalogService.Persistence
 {

@@ -1,12 +1,10 @@
-﻿using Microservice.Framework.Domain;
-using Microservice.Framework.Domain.Extensions;
-using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+using XFrame.Aggregates.Commands.Extensions;
+using XFrame.Aggregates.EventMetadata.Extentions;
+using XFrame.Aggregates.Events.Extensions;
+using XFrame.Aggregates.Queries.Extensions;
+using XFrame.DomainContainers;
 
 namespace EventCatalogService.Domain
 {
@@ -18,7 +16,12 @@ namespace EventCatalogService.Domain
             this IServiceCollection services)
         {
             return DomainContainer.New(services)
-                .AddDefaults(Assembly);
+                .AddEvents(Assembly, null)
+                .AddCommands(Assembly, null)
+                .AddCommandHandlers(Assembly, null)
+                .AddQueries(Assembly, null)
+                .AddQueryHandlers(Assembly, null)
+                .AddMetadataProviders(Assembly, null);
         }
     }
 }

@@ -1,10 +1,8 @@
 ﻿using EventCatalogService.Api.Models.Dtos;
 using EventCatalogService.Domain.DomainModel.EventCatalogDomainModel;
-using Microservice.Framework.Common;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using XFrame.Common.Extensions;
 
 namespace EventCatalogService.Api.Mappers
 {

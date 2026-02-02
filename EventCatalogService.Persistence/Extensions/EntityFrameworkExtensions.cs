@@ -1,11 +1,10 @@
-﻿using Microservice.Framework.Domain;
-using Microservice.Framework.Domain.Extensions;
-using Microservice.Framework.Persistence;
-using Microservice.Framework.Persistence.EFCore;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using XFrame.DomainContainers;
+using XFrame.Persistence;
+using XFrame.Persistence.EFCore;
+using XFrame.Persistence.EFCore.Extensions;
 
 namespace EventCatalogService.Persistence.Extensions
 {

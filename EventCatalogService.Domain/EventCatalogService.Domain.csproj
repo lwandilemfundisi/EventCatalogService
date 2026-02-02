@@ -1,16 +1,26 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
   </PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="Microservice.Framework.Domain" Version="1.0.9" />
-		<PackageReference Include="Microservice.Framework.Persistence.EFCore" Version="1.0.5" />
-		<PackageReference Include="Microsoft.Extensions.Http" Version="5.0.0" />
-		<PackageReference Include="Microsoft.Extensions.Http.Polly" Version="5.0.1" />
-		<PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
-		<PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.1.0" />
-		<PackageReference Include="Microsoft.AspNetCore.SignalR.Core" Version="1.1.0" />
+		<PackageReference Include="XFrame.Aggregates" Version="9.0.0" />
+		<PackageReference Include="XFrame.Aggregates.Commands" Version="9.0.0" />
+		<PackageReference Include="XFrame.Aggregates.Commands.Extensions" Version="9.0.0" />
+		<PackageReference Include="XFrame.Aggregates.EventMetadata.Extentions" Version="9.0.0" />
+		<PackageReference Include="XFrame.Aggregates.Events.Extensions" Version="9.0.0" />
+		<PackageReference Include="XFrame.Aggregates.Queries" Version="9.0.0" />
+		<PackageReference Include="XFrame.Aggregates.Queries.Extensions" Version="9.0.0" />
+		<PackageReference Include="XFrame.DomainContainers" Version="9.0.0" />
+		<PackageReference Include="XFrame.Persistence.EFCore" Version="9.0.0" />
+		<PackageReference Include="XFrame.Persistence.EFCore.Extensions" Version="9.0.0" />
+		<PackageReference Include="XFrame.Specifications" Version="9.0.0" />
+		<PackageReference Include="XFrame.Specifications.Extensions" Version="9.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Http" Version="10.0.2" />
+		<PackageReference Include="Microsoft.Extensions.Http.Polly" Version="10.0.2" />
+		<PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="6.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.2.9" />
+		<PackageReference Include="Microsoft.AspNetCore.SignalR.Core" Version="1.2.9" />
 	</ItemGroup>
 
 </Project>

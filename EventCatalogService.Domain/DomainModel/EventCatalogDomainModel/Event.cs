@@ -1,11 +1,7 @@
 ﻿using EventCatalogService.Domain.DomainModel.EventCatalogDomainModel.Entities;
 using EventCatalogService.Domain.DomainModel.EventCatalogDomainModel.Events;
-using Microservice.Framework.Domain.Aggregates;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using XFrame.Aggregates;
 
 namespace EventCatalogService.Domain.DomainModel.EventCatalogDomainModel
 {
