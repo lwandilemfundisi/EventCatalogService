@@ -8,7 +8,10 @@
   </PropertyGroup>
 
 	<ItemGroup>
+		<PackageReference Include="AspNetCore.SpaYarp" Version="2.0.1" />
+		<PackageReference Include="Duende.BFF" Version="4.1.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.2" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="10.0.2" />
 		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.22.1" />
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
 		<PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="10.0.2" />
@@ -24,5 +27,11 @@
 	  <ProjectReference Include="..\EventCatalogService.Domain\EventCatalogService.Domain.csproj" />
 	  <ProjectReference Include="..\EventCatalogService.Persistence\EventCatalogService.Persistence.csproj" />
 	</ItemGroup>
+
+	<PropertyGroup>
+		<SpaRoot>C:\Learn\LearnReact\react-next-ticket-sales-ui\online-ticket-sales</SpaRoot>
+		<SpaClientUrl>http://localhost:3000</SpaClientUrl>
+		<SpaLaunchCommand>npm run dev</SpaLaunchCommand>
+	</PropertyGroup>
 
 </Project>
